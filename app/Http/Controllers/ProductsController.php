@@ -12,7 +12,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::all();
-        return response()->json(['products' => $products], 200);
+        return response()->json($products, 200);
     }
 
     public function show($id)
@@ -32,6 +32,9 @@ class ProductsController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'qty' => 'required|integer',
+            'category' => 'required|string',
+            'brand' => 'required|string',
+            'rating' => 'required|string', // Update to accept string
         ]);
 
         if ($validator->fails()) {
@@ -48,6 +51,9 @@ class ProductsController extends Controller
             'description' => $request->input('description'),
             'price' => $request->input('price'),
             'qty' => $request->input('qty'),
+            'category' => $request->input('category'),
+            'brand' => $request->input('brand'),
+            'rating' => $request->input('rating'),
         ]);
 
         return response()->json(['message' => 'Product added successfully', 'product' => $product], 201);
@@ -66,6 +72,9 @@ class ProductsController extends Controller
             'description' => 'string',
             'price' => 'numeric',
             'qty' => 'integer',
+            'category' => 'string',
+            'brand' => 'string',
+            'rating' => 'string', // Update to accept string
         ]);
 
         if ($validator->fails()) {
@@ -84,6 +93,9 @@ class ProductsController extends Controller
         $product->description = $request->input('description', $product->description);
         $product->price = $request->input('price', $product->price);
         $product->qty = $request->input('qty', $product->qty);
+        $product->category = $request->input('category', $product->category);
+        $product->brand = $request->input('brand', $product->brand);
+        $product->rating = $request->input('rating', $product->rating);
         $product->save();
 
         return response()->json(['message' => 'Product updated successfully', 'product' => $product], 200);

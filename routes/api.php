@@ -24,11 +24,6 @@ Route::middleware('auth:sanctum')->group(function () {
     // Create a new product
     Route::post('/product/add', [ProductsController::class, 'store']);
 
-    // Retrieve all products
-    Route::get('/products', [ProductsController::class, 'index']);
-
-    // Retrieve a specific product by ID
-    Route::get('/product/{id}', [ProductsController::class, 'show']);
 
     // Update a product by ID
     Route::put('/product/{id}', [ProductsController::class, 'update']);
@@ -38,6 +33,8 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 
+Route::get('/products', [ProductsController::class, 'index']);
+Route::get('/product/{id}', [ProductsController::class, 'show']);
 
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);

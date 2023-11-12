@@ -13,6 +13,9 @@ class Product extends Model
         'name',
         'description',
         'price',
-        'qty'
+        'qty',
+        'brand',
+        'category',
+        'rating'
     ];
 }
