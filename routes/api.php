@@ -38,3 +38,4 @@ Route::get('/product/{id}', [ProductsController::class, 'show']);
 
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/register', [LoginController::class, 'adduser']);
